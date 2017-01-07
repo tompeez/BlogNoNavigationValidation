@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.1.66.73" id="inputPageDef" Package="de.hahn.blog.nonavvalidation.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="myId" Type="java.lang.String"/>
+      <variable Name="myName" Type="java.lang.String"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="variables" id="myId1">
+      <AttrNames>
+        <Item Value="myId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="myName1">
+      <AttrNames>
+        <Item Value="myName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

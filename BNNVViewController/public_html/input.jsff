@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="center">
+      <af:panelGroupLayout layout="vertical" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" id="pgl1">
+        <af:inputText label="ID (mandatory)" id="it1" required="true" value="#{bindings.myId1.inputValue}" autoSubmit="true">
+          <af:clientListener method="setFocusWhenValidateFail" type="blur"/>
+          <af:serverListener type="validateServerListener" method="#{viewScope.InputValidationBean.handleValidationEvent}"/>
+        </af:inputText>
+        <af:inputText label="Name (not mendatory)" id="it2" value="#{bindings.myName1.inputValue}" autoSubmit="true">
+          <af:clientListener method="setFocusWhenValidateFail" type="blur"/>
+          <af:serverListener type="validateServerListener" method="#{viewScope.InputValidationBean.handleValidationEvent}"/>
+        </af:inputText>
+        <af:commandButton text="Test" id="cb1" actionListener="#{viewScope.InputValidationBean.testButtonListener}"/>
+      </af:panelGroupLayout>
+      <!-- id="af_one_column_stretched"   -->
+    </f:facet>
+    <f:facet name="top">
+      <af:panelFormLayout id="pfl1">
+        <af:resource type="javascript">
+          function setFocusWhenValidateFail(event) {
+              var element = event.getSource();
+              var val = element.getValue();
+              var cid = element.getClientId();
+              console.log("Value=" + val);
+              if (val == null) {
+                  element.focus();
+                  event.cancel();
+              }
+              else {
+                  console.log("call server with " + cid + " and " + val)
+                  AdfCustomEvent.queue(element, "validateServerListener", 
+                      {
+                          fcid : cid, fvalue : val
+                      }, false);
+                  event.cancel();
+              }
+          }
+        </af:resource>
+        <f:facet name="footer"/>
+      </af:panelFormLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

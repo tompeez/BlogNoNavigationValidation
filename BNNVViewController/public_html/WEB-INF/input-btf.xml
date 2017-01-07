@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="input-btf">
+    <default-activity id="__1">input</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__4">InputValidationBean</managed-bean-name>
+      <managed-bean-class id="__2">de.hahn.blog.nonavvalidation.view.beans.InputValidationBean</managed-bean-class>
+      <managed-bean-scope id="__5">view</managed-bean-scope>
+    </managed-bean>
+    <view id="input">
+      <page>/input.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
